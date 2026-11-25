@@ -1,3 +1,3 @@
 VERY IMPORTANT______________________________________________________________________________________________
 DONT OPEN ANY FILE!__________________________________________________________________________________________
-COPY THE LINK, PUT IT IN YOUR SEARCH AND CLICK ENTER: https://github.com/22649-bot/kaaswereld.git___________
+COPY THE LINK, PUT IT IN YOUR SEARCH AND CLICK ENTER: kaaswereld.vercel.app___________
