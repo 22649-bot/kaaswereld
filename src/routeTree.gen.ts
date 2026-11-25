@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FavorietenRouteImport } from './routes/favorieten'
+import { Route as KazenRouteImport } from './routes/kazen'
+import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as WeetjesRouteImport } from './routes/weetjes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FavorietenRoute = FavorietenRouteImport.update({
+  id: '/favorieten',
+  path: '/favorieten',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KazenRoute = KazenRouteImport.update({
+  id: '/kazen',
+  path: '/kazen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeetjesRoute = WeetjesRouteImport.update({
+  id: '/weetjes',
+  path: '/weetjes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favorieten': typeof FavorietenRoute
+  '/kazen': typeof KazenRoute
+  '/quiz': typeof QuizRoute
+  '/weetjes': typeof WeetjesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favorieten': typeof FavorietenRoute
+  '/kazen': typeof KazenRoute
+  '/quiz': typeof QuizRoute
+  '/weetjes': typeof WeetjesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/favorieten': typeof FavorietenRoute
+  '/kazen': typeof KazenRoute
+  '/quiz': typeof QuizRoute
+  '/weetjes': typeof WeetjesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/favorieten' | '/kazen' | '/quiz' | '/weetjes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/favorieten' | '/kazen' | '/quiz' | '/weetjes'
+  id: '__root__' | '/' | '/favorieten' | '/kazen' | '/quiz' | '/weetjes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FavorietenRoute: typeof FavorietenRoute
+  KazenRoute: typeof KazenRoute
+  QuizRoute: typeof QuizRoute
+  WeetjesRoute: typeof WeetjesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/favorieten': {
+      id: '/favorieten'
+      path: '/favorieten'
+      fullPath: '/favorieten'
+      preLoaderRoute: typeof FavorietenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kazen': {
+      id: '/kazen'
+      path: '/kazen'
+      fullPath: '/kazen'
+      preLoaderRoute: typeof KazenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weetjes': {
+      id: '/weetjes'
+      path: '/weetjes'
+      fullPath: '/weetjes'
+      preLoaderRoute: typeof WeetjesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FavorietenRoute: FavorietenRoute,
+  KazenRoute: KazenRoute,
+  QuizRoute: QuizRoute,
+  WeetjesRoute: WeetjesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
