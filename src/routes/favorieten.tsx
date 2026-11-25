@@ -24,7 +24,7 @@ function Favorieten() {
   const list = cheeses.filter((c) => favs.includes(c.id));
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
-      <h1 className="text-4xl font-extrabold text-brown md:text-5xl">Mijn favorieten ❤️</h1>
+      <h1 className="text-4xl font-extrabold text-brown md:text-5xl">Mijn favorieten </h1>
       <p className="mt-2 text-muted-foreground">{list.length} {list.length === 1 ? "kaas" : "kazen"} bewaard</p>
       {list.length === 0 ? (
         <div className="mx-auto mt-16 max-w-md rounded-3xl border border-border bg-card p-10 text-center shadow-soft">

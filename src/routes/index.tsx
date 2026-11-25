@@ -28,10 +28,10 @@ function Index() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:py-24 lg:grid-cols-2">
           <div className="animate-rise">
             <span className="inline-flex items-center gap-2 rounded-full bg-card px-4 py-1.5 text-sm font-bold text-brown shadow-soft">
-              <CheeseWedge className="w-5" /> {cheeses.length} kazen · 5 regio's
+              <CheeseWedge className="w-5" /> {cheeses.length} kazen · {categorieen.length} regio's
             </span>
             <h1 className="mt-6 text-5xl font-extrabold leading-[1.05] text-brown md:text-7xl">
-              DE WERELD VAN KAAS 🧀
+              DE WERELD VAN KAAS
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               Ontdek de lekkerste kazen van over de hele wereld. Van romige brie tot pittige blauwe kaas: er valt ontzettend veel te ontdekken!
@@ -54,11 +54,10 @@ function Index() {
 
       <section className="mx-auto max-w-7xl px-4 py-16">
         <h2 className="text-center text-3xl font-bold text-brown md:text-4xl">Kies een kaasland</h2>
-        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {categorieen.map((c) => (
             <Link key={c} to="/kazen" search={{ land: c }} className="rounded-3xl border border-border bg-card p-5 text-center font-bold text-brown shadow-soft transition-all hover:-translate-y-1 hover:bg-secondary">
-              <span className="block text-3xl">{categorieLabel[c].split(" ")[0]}</span>
-              <span className="mt-2 block text-sm">{categorieLabel[c].split(" ").slice(1).join(" ")}</span>
+                            <span className="block">{c}</span>
               <span className="mt-1 block text-xs font-semibold text-muted-foreground">{cheeses.filter((x) => x.category === c).length} kazen</span>
             </Link>
           ))}

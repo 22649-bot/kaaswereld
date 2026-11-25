@@ -49,7 +49,7 @@ export function CheeseCard({ cheese, onOpen }: { cheese: Cheese; onOpen: () => v
         </div>
         <p className="text-sm"><b>Smaak:</b> {cheese.taste}</p>
         <div className="flex flex-wrap gap-1.5"><Tag>{cheese.structure}</Tag><Tag>{cheese.type}</Tag></div>
-        <p className="mt-auto rounded-2xl bg-muted p-3 text-sm text-muted-foreground">💡 {cheese.fact}</p>
+        <p className="mt-auto rounded-2xl bg-muted p-3 text-sm text-muted-foreground">{cheese.fact}</p>
       </div>
     </article>
   );

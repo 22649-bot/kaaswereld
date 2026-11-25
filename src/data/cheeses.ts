@@ -87,8 +87,14 @@ const raw: Raw[] = [
   { name: "Oaxaca", country: "Mexico", category: "Overig", milk: "Koemelk", structure: "Zacht", strength: "Mild", type: "Pasta filata", taste: "Mild, boterachtig en licht zout.", fact: "Oaxaca-kaas wordt opgerold als een bolletje wol; je kunt hem in draadjes uit elkaar trekken.", description: "Oaxaca, ook quesillo genoemd, wordt net als mozzarella gekneed en uitgerekt tot lange linten die tot een bol worden opgewonden.", ripening: "Vers", pairing: "Quesadilla, tlayuda" },
 ];
 
-export const cheeses: Cheese[] = raw.map((c) => ({
+const extra: Raw[] = extraRows.map(([name, , country, m, structure, strength, type, taste, fact, ripening, pairing]) => ({
+  name, country, category: country, milk: melkCode[m], structure, strength, type, taste, fact, ripening, pairing,
+  description: `${name} is een ${type.toLowerCase()} uit ${country}, gemaakt van ${melkCode[m].toLowerCase()}. ${taste}`,
+}));
+
+export const cheeses: Cheese[] = [...raw, ...extra].map((c) => ({
   ...c,
+  category: c.country,
   id: c.name
     .toLowerCase()
     .normalize("NFD")
@@ -97,8 +103,6 @@ export const cheeses: Cheese[] = raw.map((c) => ({
   image: cheeseImages[c.name] ?? "",
 }));
 
-const lijst = [...cheeses];
-export { lijst as alleKazen };
 
 export const categorieen: Categorie[] = [...new Set(cheeses.map((c) => c.country))].sort((a, b) => a.localeCompare(b, "nl"));
 export const melksoorten: Melk[] = ["Koemelk", "Geitenmelk", "Schapenmelk", "Buffelmelk"];

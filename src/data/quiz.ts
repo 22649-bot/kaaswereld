@@ -15,8 +15,8 @@ export const vragen: Vraag[] = [
 
 export function eindboodschap(score: number, totaal: number) {
   const p = score / totaal;
-  if (p === 1) return { titel: "Grote Kaaskaas! 🏆", tekst: "Alles goed! Jij bent een echte kaasmeester." };
-  if (p >= 0.7) return { titel: "Echte kaaskenner! 🧀", tekst: "Indrukwekkend, je weet ontzettend veel over kaas." };
-  if (p >= 0.4) return { titel: "Lekker bezig! 😋", tekst: "Een mooie score. Nog een paar weetjes en je bent een expert." };
-  return { titel: "Jonge kaas 🐣", tekst: "Je staat nog aan het begin van je kaasreis. Lees de weetjes en probeer het opnieuw!" };
+  if (p === 1) return { titel: "Grote Kaaskaas! ", tekst: "Alles goed! Jij bent een echte kaasmeester." };
+  if (p >= 0.7) return { titel: "Echte kaaskenner! ", tekst: "Indrukwekkend, je weet ontzettend veel over kaas." };
+  if (p >= 0.4) return { titel: "Lekker bezig! ", tekst: "Een mooie score. Nog een paar weetjes en je bent een expert." };
+  return { titel: "Jonge kaas ", tekst: "Je staat nog aan het begin van je kaasreis. Lees de weetjes en probeer het opnieuw!" };
 }

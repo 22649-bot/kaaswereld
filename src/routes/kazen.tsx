@@ -93,7 +93,7 @@ function KazenPage() {
       </div>
 
       {list.length === 0 ? (
-        <p className="mt-16 text-center text-lg text-muted-foreground">🧀 Geen kazen gevonden. Probeer een andere zoekterm of filter.</p>
+        <p className="mt-16 text-center text-lg text-muted-foreground">Geen kazen gevonden. Probeer een andere zoekterm of filter.</p>
       ) : active ? (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {list.map((c) => <CheeseCard key={c.id} cheese={c} onOpen={() => setOpen(c)} />)}
@@ -101,7 +101,7 @@ function KazenPage() {
       ) : (
         categorieen.map((g) => (
           <section key={g} className="mt-14">
-            <h2 className="text-3xl font-bold text-brown">{categorieLabel[g]}</h2>
+            <h2 className="text-3xl font-bold text-brown">{categorieLabel(g)}</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {list.filter((c) => c.category === g).map((c) => <CheeseCard key={c.id} cheese={c} onOpen={() => setOpen(c)} />)}
             </div>

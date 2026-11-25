@@ -80,7 +80,7 @@ function Quiz() {
         {keuze !== null && (
           <div className="mt-6 animate-rise">
             <p className={`font-bold ${keuze === v.antwoord ? "text-success" : "text-destructive"}`}>
-              {keuze === v.antwoord ? "🎉 Goed zo!" : "😅 Helaas, fout."}
+              {keuze === v.antwoord ? "Goed zo!" : "Helaas, fout."}
             </p>
             <p className="mt-1 text-muted-foreground">{v.uitleg}</p>
             <button onClick={volgende} className="mt-5 rounded-full bg-brown px-6 py-3 font-bold text-brown-foreground hover:-translate-y-0.5">
