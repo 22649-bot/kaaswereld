@@ -1,9 +1,10 @@
 import { cheeseImages } from "./cheese-images";
+import { extraRows, melkCode } from "./cheeses-extra";
 
 export type Melk = "Koemelk" | "Geitenmelk" | "Schapenmelk" | "Buffelmelk";
 export type Structuur = "Zacht" | "Romig" | "Stevig" | "Hard";
 export type Smaak = "Mild" | "Sterk";
-export type Categorie = "Nederland" | "Frankrijk" | "Italië" | "Zwitserland" | "Overig";
+export type Categorie = string;
 export type Kaassoort =
   | "Halfharde kaas"
   | "Harde kaas"
@@ -96,16 +97,13 @@ export const cheeses: Cheese[] = raw.map((c) => ({
   image: cheeseImages[c.name] ?? "",
 }));
 
-export const categorieen: Categorie[] = ["Nederland", "Frankrijk", "Italië", "Zwitserland", "Overig"];
+const lijst = [...cheeses];
+export { lijst as alleKazen };
+
+export const categorieen: Categorie[] = [...new Set(cheeses.map((c) => c.country))].sort((a, b) => a.localeCompare(b, "nl"));
 export const melksoorten: Melk[] = ["Koemelk", "Geitenmelk", "Schapenmelk", "Buffelmelk"];
 export const structuren: Structuur[] = ["Zacht", "Romig", "Stevig", "Hard"];
 export const smaken: Smaak[] = ["Mild", "Sterk"];
 export const kaassoorten: Kaassoort[] = ["Halfharde kaas", "Harde kaas", "Witschimmel", "Blauwschimmel", "Roodflora", "Verse kaas", "Pasta filata", "Kruidenkaas"];
 
-export const categorieLabel: Record<Categorie, string> = {
-  Nederland: "🇳🇱 Nederlandse kazen",
-  Frankrijk: "🇫🇷 Franse kazen",
-  Italië: "🇮🇹 Italiaanse kazen",
-  Zwitserland: "🇨🇭 Zwitserse kazen",
-  Overig: "🌍 Overige kazen",
-};
+export const categorieLabel = (c: Categorie) => `Kazen uit ${c}`;
