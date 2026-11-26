@@ -9,10 +9,10 @@ import { CheeseWedge } from "@/components/CheeseDecor";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "De Wereld van Kaas – ontdek 45 kazen uit de hele wereld" },
+      { title: `De Wereld van Kaas – ontdek ${cheeses.length} kazen uit de hele wereld` },
       { name: "description", content: "Ontdek de lekkerste kazen van over de hele wereld: van romige brie tot pittige blauwe kaas, met weetjes, quiz en favorieten." },
       { property: "og:title", content: "De Wereld van Kaas" },
-      { property: "og:description", content: "Een interactieve encyclopedie over kaas met 45 kazen, weetjes en een quiz." },
+      { property: "og:description", content: `Een interactieve encyclopedie over kaas met ${cheeses.length} kazen, weetjes en een quiz.` },
     ],
   }),
   component: Index,

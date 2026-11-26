@@ -14,7 +14,7 @@ export const Route = createFileRoute("/kazen")({
   head: () => ({
     meta: [
       { title: "Alle kazen – De Wereld van Kaas" },
-      { name: "description", content: "Zoek en filter 45 kazen op land, melksoort, structuur, smaak en kaassoort." },
+      { name: "description", content: `Zoek en filter ${cheeses.length} kazen op land, melksoort, structuur, smaak en kaassoort.` },
       { property: "og:title", content: "Alle kazen – De Wereld van Kaas" },
       { property: "og:description", content: "Van Gouda tot Oaxaca: bekijk de complete kaascollectie." },
     ],

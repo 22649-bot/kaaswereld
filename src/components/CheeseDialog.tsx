@@ -20,7 +20,7 @@ export function CheeseDialog({ cheese, onClose }: { cheese: Cheese | null; onClo
               <div className="flex flex-wrap gap-1.5"><Tag>{cheese.structure}</Tag><Tag>{cheese.strength}</Tag><Tag>{cheese.type}</Tag></div>
               <p className="leading-relaxed">{cheese.description}</p>
               <dl className="grid gap-3 sm:grid-cols-2">
-                {[["Smaak", cheese.taste], ["Structuur", cheese.structure], ["⏳ Rijptijd", cheese.ripening], ["Lekker met", cheese.pairing]].map(([k, v]) => (
+                {[["Smaak", cheese.taste], ["Structuur", cheese.structure], ["Rijptijd", cheese.ripening], ["Lekker met", cheese.pairing]].map(([k, v]) => (
                   <div key={k} className="rounded-2xl bg-muted p-3">
                     <dt className="text-xs font-bold uppercase tracking-wide text-muted-foreground">{k}</dt>
                     <dd className="mt-1 text-sm">{v}</dd>
