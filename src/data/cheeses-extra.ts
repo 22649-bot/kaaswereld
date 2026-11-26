@@ -1,7 +1,7 @@
 import type { Kaassoort, Melk, Smaak, Structuur } from "./cheeses";
 
 // [naam, wikipedia-titel, land, melk, structuur, smaak, soort, smaak-omschrijving, weetje, rijping, combinatie]
-type Row = [string, string, string, "K" | "G" | "S" | "B", Structuur, Smaak, Kaassoort, string, string, string, string];
+export type Row = [string, string, string, "K" | "G" | "S" | "B", Structuur, Smaak, Kaassoort, string, string, string, string];
 
 export const melkCode: Record<Row[3], Melk> = { K: "Koemelk", G: "Geitenmelk", S: "Schapenmelk", B: "Buffelmelk" };
 
