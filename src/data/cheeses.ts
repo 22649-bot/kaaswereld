@@ -1,5 +1,7 @@
 import { cheeseImages } from "./cheese-images";
+import { moreCheeseImages } from "./cheese-images-more";
 import { extraRows, melkCode } from "./cheeses-extra";
+import { moreRows } from "./cheeses-more";
 
 export type Melk = "Koemelk" | "Geitenmelk" | "Schapenmelk" | "Buffelmelk";
 export type Structuur = "Zacht" | "Romig" | "Stevig" | "Hard";
@@ -87,24 +89,81 @@ const raw: Raw[] = [
   { name: "Oaxaca", country: "Mexico", category: "Overig", milk: "Koemelk", structure: "Zacht", strength: "Mild", type: "Pasta filata", taste: "Mild, boterachtig en licht zout.", fact: "Oaxaca-kaas wordt opgerold als een bolletje wol; je kunt hem in draadjes uit elkaar trekken.", description: "Oaxaca, ook quesillo genoemd, wordt net als mozzarella gekneed en uitgerekt tot lange linten die tot een bol worden opgewonden.", ripening: "Vers", pairing: "Quesadilla, tlayuda" },
 ];
 
-const extra: Raw[] = extraRows.map(([name, , country, m, structure, strength, type, taste, fact, ripening, pairing]) => ({
-  name, country, category: country, milk: melkCode[m], structure, strength, type, taste, fact, ripening, pairing,
+const regioGroepen: Record<string, Categorie> = {
+  Duitsland: "Duitsland & Oostenrijk",
+  Oostenrijk: "Duitsland & Oostenrijk",
+  Engeland: "Britse Eilanden",
+  Wales: "Britse Eilanden",
+  Schotland: "Britse Eilanden",
+  Ierland: "Britse Eilanden",
+  Denemarken: "Scandinavië",
+  Noorwegen: "Scandinavië",
+  Zweden: "Scandinavië",
+  Finland: "Scandinavië",
+  IJsland: "Scandinavië",
+  Polen: "Centraal-Europa",
+  Tsjechië: "Centraal-Europa",
+  Slowakije: "Centraal-Europa",
+  Hongarije: "Centraal-Europa",
+  Roemenië: "Balkan",
+  Bulgarije: "Balkan",
+  Servië: "Balkan",
+  Kroatië: "Balkan",
+  Slovenië: "Balkan",
+  Rusland: "Oost-Europa & Kaukasus",
+  Georgië: "Oost-Europa & Kaukasus",
+  Armenië: "Oost-Europa & Kaukasus",
+  Litouwen: "Oost-Europa & Kaukasus",
+  Libanon: "Midden-Oosten",
+  Israël: "Midden-Oosten",
+  Jordanië: "Midden-Oosten",
+  Syrië: "Midden-Oosten",
+  Iran: "Midden-Oosten",
+  Egypte: "Afrika",
+  Ethiopië: "Afrika",
+  Benin: "Afrika",
+  Marokko: "Afrika",
+  Algerije: "Afrika",
+  Nigeria: "Afrika",
+  Eritrea: "Afrika",
+  "Zuid-Afrika": "Afrika",
+  India: "Zuid-Azië",
+  Nepal: "Zuid-Azië",
+  Bhutan: "Zuid-Azië",
+  Mongolië: "Oost- en Zuidoost-Azië",
+  China: "Oost- en Zuidoost-Azië",
+  Filipijnen: "Oost- en Zuidoost-Azië",
+  Japan: "Oost- en Zuidoost-Azië",
+  Colombia: "Zuid-Amerika",
+  Venezuela: "Zuid-Amerika",
+  Brazilië: "Zuid-Amerika",
+  Argentinië: "Zuid-Amerika",
+  Peru: "Zuid-Amerika",
+  Chili: "Zuid-Amerika",
+  Australië: "Oceanië",
+  "Nieuw-Zeeland": "Oceanië",
+  Griekenland: "Griekenland & Cyprus",
+  Cyprus: "Griekenland & Cyprus",
+};
+
+const extra: Raw[] = [...extraRows, ...moreRows].map(([name, , country, m, structure, strength, type, taste, fact, ripening, pairing]) => ({
+  name, country, category: regioGroepen[country] ?? country, milk: melkCode[m], structure, strength, type, taste, fact, ripening, pairing,
   description: `${name} is een ${type.toLowerCase()} uit ${country}, gemaakt van ${melkCode[m].toLowerCase()}. ${taste}`,
 }));
 
 export const cheeses: Cheese[] = [...raw, ...extra].map((c) => ({
   ...c,
-  category: c.country,
+  category: regioGroepen[c.country] ?? c.country,
   id: c.name
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-"),
-  image: cheeseImages[c.name] ?? "",
+  image: moreCheeseImages[c.name] ?? cheeseImages[c.name] ?? "",
 }));
 
 
-export const categorieen: Categorie[] = [...new Set(cheeses.map((c) => c.country))].sort((a, b) => a.localeCompare(b, "nl"));
+export const categorieen: Categorie[] = [...new Set(cheeses.map((c) => c.category))].sort((a, b) => a.localeCompare(b, "nl"));
 export const melksoorten: Melk[] = ["Koemelk", "Geitenmelk", "Schapenmelk", "Buffelmelk"];
 export const structuren: Structuur[] = ["Zacht", "Romig", "Stevig", "Hard"];
 export const smaken: Smaak[] = ["Mild", "Sterk"];

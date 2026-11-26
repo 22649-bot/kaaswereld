@@ -53,7 +53,7 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="text-center text-3xl font-bold text-brown md:text-4xl">Kies een kaasland</h2>
+        <h2 className="text-center text-3xl font-bold text-brown md:text-4xl">Kies een kaasregio</h2>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {categorieen.map((c) => (
             <Link key={c} to="/kazen" search={{ land: c }} className="rounded-3xl border border-border bg-card p-5 text-center font-bold text-brown shadow-soft transition-all hover:-translate-y-1 hover:bg-secondary">

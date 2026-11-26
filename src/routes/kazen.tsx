@@ -73,11 +73,17 @@ function KazenPage() {
             className="w-full rounded-full border border-input bg-background py-3 pl-12 pr-4 text-base outline-none focus:ring-2 focus:ring-ring" />
         </div>
         <div className="grid gap-5 lg:grid-cols-2">
-          <Chips label="Regio" options={categorieen} value={cat} onChange={setCat} />
           <div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">Land van herkomst</p>
-            <select value={country} onChange={(e) => setCountry(e.target.value)} className="w-full rounded-full border border-input bg-background px-4 py-2 font-semibold">
-              <option value="">Alle landen</option>
+            <label htmlFor="regio-filter" className="mb-2 block text-xs font-bold uppercase tracking-wide text-muted-foreground">Regio</label>
+            <select id="regio-filter" value={cat} onChange={(e) => setCat(e.target.value as Categorie | "")} className="w-full rounded-full border border-input bg-background px-4 py-2 font-semibold">
+              <option value="">Alle {categorieen.length} regio's</option>
+              {categorieen.map((c) => <option key={c} value={c}>{c} ({cheeses.filter((kaas) => kaas.category === c).length})</option>)}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="land-filter" className="mb-2 block text-xs font-bold uppercase tracking-wide text-muted-foreground">Land van herkomst</label>
+            <select id="land-filter" value={country} onChange={(e) => setCountry(e.target.value)} className="w-full rounded-full border border-input bg-background px-4 py-2 font-semibold">
+              <option value="">Alle {landen.length} landen</option>
               {landen.map((l) => <option key={l}>{l}</option>)}
             </select>
           </div>
